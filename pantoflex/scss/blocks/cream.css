@@ -1,0 +1,34 @@
+#cream {
+  background-image: url("../img/header_bg1.png");
+  padding: 40px 0 30px 0;
+}
+#cream .content {
+  max-width: 599px;
+}
+#cream .title {
+  font-size: 60px;
+  font-weight: bold;
+  color: #3b3944;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+#cream .title span.color {
+  color: #5774b8;
+}
+#cream .sub_title {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-bottom: 50px;
+}
+#cream .pack {
+  position: absolute;
+  right: 0;
+  top: -66px;
+  height: 450px;
+}
+@media (max-width: 1200px) {
+  #cream .pack {
+    height: 220px;
+  }
+}
