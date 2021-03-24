@@ -41,12 +41,10 @@ function initSlider() {
 function count() {
     let counts = document.querySelectorAll('.efficiency-data__count-value')
     function startCount(element) {
-
         
-        if ((element.getBoundingClientRect().bottom > document.documentElement.clientHeight) || (element.getBoundingClientRect().bottom < element.getBoundingClientRect().height)) {
+        if ((counts[0].getBoundingClientRect().bottom > document.documentElement.clientHeight) || (counts[0].getBoundingClientRect().bottom < counts[0].getBoundingClientRect().height)) {
             return
         }
-
         function setCount () {
             let currentValue = +element.innerHTML
             let setNewValue = setInterval(function () {
@@ -85,6 +83,7 @@ function countAfterResize () {
 window.addEventListener('resize', countAfterResize)
 
 function checkCountVisibility () {
+    
     let element = document.querySelector('.efficiency-data__count-value')
     if ((element.getBoundingClientRect().bottom > document.documentElement.clientHeight) || (element.getBoundingClientRect().bottom < element.getBoundingClientRect().height)) {
         return
