@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     initSlider()
     count()
+    document.addEventListener('scroll', checkCountVisibility)
 })
-document.addEventListener('scroll', checkCountVisibility)
+
 
 function initSlider() {
-    $('.efficiency-data').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        count()
-    });
     let slider = $('.efficiency-data')
     let settings = {
         infinite: false,
@@ -40,9 +38,15 @@ function initSlider() {
 }
 function count() {
     let counts = document.querySelectorAll('.efficiency-data__count-value')
+    
+    if (document.querySelector('.slick-initialized')) {
+        for (let i = 0; i < counts.length; i++) {
+            counts[i].innerHTML = counts[i].dataset.value
+        }
+        return
+    } 
     function startCount(element) {
-        
-        if ((counts[0].getBoundingClientRect().bottom > document.documentElement.clientHeight) || (counts[0].getBoundingClientRect().bottom < counts[0].getBoundingClientRect().height)) {
+        if ((element.getBoundingClientRect().bottom > document.documentElement.clientHeight) || (element.getBoundingClientRect().bottom < element.getBoundingClientRect().height)) {
             return
         }
         function setCount () {
@@ -50,7 +54,7 @@ function count() {
             let setNewValue = setInterval(function () {
                 if (currentValue === +element.dataset.value) {
                     clearInterval(setNewValue)
-                    element.classList.add('counted')
+            
                     return
                 }
                 currentValue += 1
@@ -58,40 +62,24 @@ function count() {
             }, 10)
         }
 
-        if (!!document.querySelector('.slick-initialized') && element.parentElement.parentElement.parentElement.classList.contains('slick-active') && !element.classList.contains('counted')) {
-            setCount () 
-        } else if (!document.querySelector('.slick-initialized') && !element.classList.contains('counted')) {
-            setCount () 
-        }
+        setCount () 
+
     }
     for (let i = 0; i < counts.length; i++) {
         startCount(counts[i])
     }
 }
-function countAfterResize () {
-    
-    if (document.documentElement.getBoundingClientRect().width > 767) {
-       setTimeout(function(){
-        count()
-       }, 200)
-    
-        
-        window.removeEventListener('resize', countAfterResize)
-    }
-}
 
-window.addEventListener('resize', countAfterResize)
-
+const countElement = document.querySelector('.efficiency-data__count-value')
 function checkCountVisibility () {
-    
-    let element = document.querySelector('.efficiency-data__count-value')
-    if ((element.getBoundingClientRect().bottom > document.documentElement.clientHeight) || (element.getBoundingClientRect().bottom < element.getBoundingClientRect().height)) {
+    if ((countElement.getBoundingClientRect().bottom > document.documentElement.clientHeight) || (countElement.getBoundingClientRect().bottom < countElement.getBoundingClientRect().height)) {
         return
     }
     count()
-    document.removeEventListener('scroll', checkCountVisibility)
+    setTimeout(function(){
+        document.removeEventListener('scroll', checkCountVisibility)
+    }, 500)
 }
-
 
 
 

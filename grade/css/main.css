@@ -243,6 +243,7 @@
 * {
   box-sizing: border-box;
 }
+
 /* Slider */
 .slick-slider
 {
@@ -373,7 +374,10 @@
 }
 .slick-arrow svg {
     pointer-events: none;
+    width: 42px;
+    height: 33px;
 }
+
 .slick-next {
     right: 15px;
 }
@@ -403,19 +407,22 @@ body {
     margin-right: auto;
 }
 .title {
-  font-size: 25px;
+  font-size: 23px;
   color: #030202;
   line-height: 1.1;
   font-weight: 700;
   margin-bottom: 15px;
   margin-top: 0;
+  
 }
 .title__small {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
   display: block;
   padding: 5px 0;
+  max-width: 400px;
 }
+
 .title__color {
   color: #f78c26;
 }
@@ -442,7 +449,9 @@ body {
     }
     .title__small {
       font-size: 25px;
+      max-width: 490px;
     }
+
 }
 @media (min-width: 768px) {
     .container {
@@ -454,6 +463,7 @@ body {
     }
     .title__small {
       font-size: 28px;
+      max-width: 570px;
     }
     .block {
       padding: 40px 0;
@@ -481,10 +491,12 @@ body {
     .title__small {
       font-size: 32px;
       padding: 10px 0;
+      max-width: 610px;
     }
     .block {
       padding: 60px 0;
     }
+
 }
 
 
@@ -532,13 +544,15 @@ body {
 .efficiency-data__cert-country {
   color: #4b587f;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 18px;
   font-weight: 300;
   margin-top: 0;
 }
 .efficiency-data__cert-img {
   margin-bottom: -15px;
+  max-width: 146px;
+  width: 100%;
 }
 .efficiency-data__title {
   margin-top: 0;
@@ -547,6 +561,9 @@ body {
   color: #2c2f35;
   margin-bottom: 10px;
   text-align: center;
+  max-width: 146px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .efficiency-data__count {
   color: #404b6a;
@@ -736,6 +753,8 @@ body {
   }
   .efficiency__main-info {
     margin-right: 20px;
+    max-width: 770px;
+    width: 100%;
   }
   .efficiency__sub-info {
     max-width: 320px;
@@ -748,7 +767,6 @@ body {
     width: 100%;
   }
   .efficiency-data__cert-country {
-    margin-bottom: 20px;
     font-size: 21px;
   }
   .efficiency-confirmation__title {
@@ -781,13 +799,14 @@ body {
   .efficiency-data__cert-country {
     font-size: 22px;
     margin-bottom: 20px;
-    padding-top: 25px;
+    
   }
   .efficiency-data {
     padding-bottom: 50px;
   }
   .efficiency-data__cert-wrap {
     margin-bottom: 50px;
+    padding-top: 25px;
   }
   .efficiency-data__title {
     margin-bottom: 15px;
